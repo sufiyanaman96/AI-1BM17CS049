@@ -1,9 +1,9 @@
-src=[1,2,3,-1,4,5,6,7,8]
-target=[1,2,3,4,5,-1,6,7,8]
-def iddfs(src,target,depth):
+start=[1,2,3,-1,4,5,6,7,8]
+desination=[1,2,3,4,5,-1,6,7,8]
+def func(start,desination,depth):
     for limit in range(0,depth+1):
         visited_states=[]
-        if dfs(src,target,limit,visited_states):
+        if dfs(start,desination,limit,visited_states):
             return True
     return False
 
@@ -30,13 +30,13 @@ def possible_moves(state,visited_states):
     return pos_moves           
 
 
-def dfs(src,target,limit,visited_states):
-    if src==target: return True
+def dfs(start,desination,limit,visited_states):
+    if start==desination: return True
     if limit <= 0 :return False
-    visited_states.append(src)
-    adj=possible_moves(src,visited_states)
+    visited_states.append(start)
+    adj=possible_moves(start,visited_states)
     for move in adj:
-        if dfs(move,target,limit-1,visited_states): return True
+        if dfs(move,desination,limit-1,visited_states): return True
     return False
 
-print(iddfs(src,target,1))
+print(func(start,desination,1))
